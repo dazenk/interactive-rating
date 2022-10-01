@@ -1,0 +1,296 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
+
+// Mixins
+@mixin display($d ,$f-direction: row, $j-content: flex-start, $a-items: stretch) {
+    display: $d;
+    flex-direction: $f-direction;
+    justify-content: $j-content;
+    align-items: $a-items;
+}
+
+// Variables
+$orange: hsl(25, 97%, 53%);
+$white: hsl(0, 0%, 100%);
+$light-grey: hsl(217, 12%, 63%);
+$medium-grey: hsl(216, 12%, 54%);
+$dark-blue: hsl(213, 19%, 18%);
+$medium-dark-blue: hsl(213, 19%, 25%);
+$very-dark-blue: hsl(216, 12%, 8%);
+
+// Styles
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-width: 100vw;
+
+    body {
+        @include display($d: flex, $j-content: center, $a-items: center);
+        background-color: $very-dark-blue;
+        min-height: 100vh;
+        font-family: 'Overpass', sans-serif;
+    }
+}
+
+.container {
+    @include display($d: flex, $f-direction: column, $j-content: space-between);
+    background-color: $dark-blue;
+    border-radius: 1.8rem;
+    padding: 2rem;
+    box-sizing: border-box;
+    width: 26rem;
+    height: 26rem;
+
+    .star-icon {
+        @include display($d: flex, $j-content: center, $a-items: center);
+        background-color: $medium-dark-blue;
+        border-radius: 23px;
+        width: 46px;
+        height: 46px;
+    }
+
+    .text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        width: 100%;
+
+        h1 {
+            color: $white;
+            font-size: 28px;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        p {
+            color: $medium-grey;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 24px;
+            text-align: left;
+        }
+    }
+
+    .btn-container {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+
+        .list {
+            @include display($d: flex, $j-content: center, $a-items: center);
+            border: none;
+            background-color: $medium-dark-blue;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            color: $medium-grey;
+            transition: all 0.2s linear;
+            font-size: 15px;
+
+            &:hover {
+                background-color: $light-grey;
+                color: $white;
+            }
+
+            &:focus {
+                background-color: $orange;
+                color: $white;
+            }
+        }
+    }
+
+    .btn-submit {
+        @include display($d: flex, $j-content: center, $a-items: center);
+        background-color: $orange;
+        border: none;
+        border-radius: 22.5px;
+        color: $white;
+        cursor: pointer;
+        height: 45px;
+        letter-spacing: 2px;
+        font-weight: 700;
+        font-size: 15px;
+        transition: all 0.2s linear;
+
+        &:hover {
+            background-color: $white;
+            color: $orange;
+        }
+    }
+}
+
+.container-rating {
+    @include display($d: none, $f-direction: column, $j-content: center);
+    background-color: $dark-blue;
+    border-radius: 1.8rem;
+    padding: 2rem;
+    box-sizing: border-box;
+    gap: 2.2rem;
+    width: 26rem;
+    height: 26rem;
+
+    .header-rating {
+        @include display($d: flex, $f-direction: column, $a-items: center);
+        gap: 1.8rem;
+        width: 100%;
+
+        .container-rate {
+            @include display($d: flex, $j-content: center, $a-items: center);
+            background-color: $medium-dark-blue;
+            border-radius: 1rem;
+            width: 12rem;
+            height: 2rem;
+
+            p {
+                color: $orange;
+                font-size: 15px;
+                font-weight: 400;
+                height: 16px;
+            }
+        }
+    }
+
+    .info {
+        @include display($d: flex, $f-direction: column, $a-items: center);
+        gap: 0.4rem;
+        width: 100%;
+
+        h2 {
+            color: $white;
+            font-size: 28px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        p {
+            color: $medium-grey;
+            font-size: 15px;
+            text-align: center;
+            line-height: 24px;
+            width: 21rem;
+        }
+    }
+}
+
+// Media queries
+@media (max-width: 455px) {
+    .container {
+        width: 24rem;
+        height: 24rem;
+    
+        .btn-container {
+    
+            .list {
+                width: 45px;
+                height: 45px;
+                border-radius: 22.5px;
+            }
+        }
+    
+        .btn-submit {
+            height: 50px;
+        }
+    }
+
+    .container-rating {
+        gap: 2.1rem;
+        width: 24rem;
+        height: 24rem;
+    
+        .info {
+    
+            h2 {
+                font-size: 26px;
+            }
+    
+            p {
+                width: 20rem;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@media (max-width: 410px) {
+    .container {
+        padding: 1.6rem;
+        width: 20.5rem;
+        height: 22.2rem;
+    
+        .star-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+        }
+    
+        .text {
+    
+            h1 {
+                font-size: 24px;
+            }
+    
+            p {
+                font-size: 14px;
+                line-height: 22px;
+            }
+        }
+    
+        .btn-container {
+    
+            .list {
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+            }
+        }
+    
+        .btn-submit {
+            height: 45px;
+            font-size: 12px;
+        }
+    }
+
+    .container-rating {
+        width: 20.5rem;
+        height: 22.2rem;
+        gap: 1.8rem;
+    
+        .header-rating {
+            gap: 1.3rem;
+
+            .img-rating {
+                width: 146px;
+
+                img {
+                    width: 100%;
+                }
+            }
+    
+            .container-rate {
+                width: 10.5rem;
+    
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+    
+        .info {
+            gap: 0.7rem;
+    
+            h2 {
+                font-size: 23px;
+            }
+    
+            p {
+                width: 17rem;
+                font-size: 13px;
+                line-height: 20px;
+            }
+        }
+    }
+}
